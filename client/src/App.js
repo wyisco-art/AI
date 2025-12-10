@@ -10,16 +10,23 @@ function App() {
   const [showTeachModal, setShowTeachModal] = useState(false);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
   const [selectedMessage, setSelectedMessage] = useState(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
+    // Check if user has seen onboarding
+    const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
+    if (!hasSeenOnboarding) {
+      setShowOnboarding(true);
+    } else {
+      // Add welcome message only if not showing onboarding
+      setMessages([{
+        type: 'ai',
+        text: 'Hello! I\'m an adaptive learning AI. I learn from every conversation and improve over time. Try talking to me, and don\'t forget to teach me new things!',
+        timestamp: new Date().toISOString()
+      }]);
+    }
     fetchStats();
-    // Add welcome message
-    setMessages([{
-      type: 'ai',
-      text: 'Hello! I\'m an adaptive learning AI. I learn from every conversation and improve over time. Try talking to me, and don\'t forget to teach me new things!',
-      timestamp: new Date().toISOString()
-    }]);
   }, []);
 
   useEffect(() => {
@@ -93,6 +100,17 @@ function App() {
   const openFeedbackModal = (message) => {
     setSelectedMessage(message);
     setShowFeedbackModal(true);
+  };
+
+  const completeOnboarding = () => {
+    localStorage.setItem('hasSeenOnboarding', 'true');
+    setShowOnboarding(false);
+    // Add welcome message
+    setMessages([{
+      type: 'ai',
+      text: 'Hello! I\'m an adaptive learning AI. I learn from every conversation and improve over time. Try talking to me, and don\'t forget to teach me new things!',
+      timestamp: new Date().toISOString()
+    }]);
   };
 
   return (
@@ -210,6 +228,8 @@ function App() {
           }}
         />
       )}
+
+      {showOnboarding && <OnboardingScreen onComplete={completeOnboarding} />}
     </div>
   );
 }
@@ -348,6 +368,52 @@ function FeedbackModal({ message, onClose, sessionId, onSuccess }) {
             </button>
           </div>
         </form>
+      </div>
+    </div>
+  );
+}
+
+function OnboardingScreen({ onComplete }) {
+  return (
+    <div className="onboarding-overlay">
+      <div className="onboarding-content">
+        <div className="onboarding-icon">🧠</div>
+        <h1 className="onboarding-title">Adaptive Learning AI</h1>
+        <p className="onboarding-subtitle">
+          An intelligent AI that learns and evolves from every conversation with you
+        </p>
+
+        <div className="onboarding-features">
+          <div className="onboarding-feature">
+            <div className="onboarding-feature-icon">💬</div>
+            <div className="onboarding-feature-content">
+              <h3>Natural Conversations</h3>
+              <p>Chat naturally about anything. I'll learn from every interaction to provide better responses.</p>
+            </div>
+          </div>
+
+          <div className="onboarding-feature">
+            <div className="onboarding-feature-icon">📚</div>
+            <div className="onboarding-feature-content">
+              <h3>Teach Me Anything</h3>
+              <p>Use the "Teach Me" button to add new knowledge. I'll remember and apply it in future conversations.</p>
+            </div>
+          </div>
+
+          <div className="onboarding-feature">
+            <div className="onboarding-feature-icon">⭐</div>
+            <div className="onboarding-feature-content">
+              <h3>Continuous Improvement</h3>
+              <p>Rate my responses and provide corrections. Your feedback helps me learn and grow smarter.</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="onboarding-actions">
+          <button className="onboarding-button primary" onClick={onComplete}>
+            Get Started
+          </button>
+        </div>
       </div>
     </div>
   );
