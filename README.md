@@ -2,6 +2,12 @@
 
 An AI chatbot that **learns from every conversation** and adapts its responses over time based on user interactions, feedback, and teachings.
 
+## 📚 Documentation
+
+- **[📦 Complete Installation Guide](INSTALL.md)** - Step-by-step setup from scratch
+- **[⚡ Quick Start](QUICKSTART.md)** - Get running in 3 minutes (for experienced devs)
+- **[📖 Full Documentation](#)** - You're reading it!
+
 ## ✨ Features
 
 - **Adaptive Learning**: The AI learns from every interaction and improves over time
@@ -10,7 +16,9 @@ An AI chatbot that **learns from every conversation** and adapts its responses o
 - **Knowledge Base**: Stores and retrieves learned information with confidence scoring
 - **Conversation Memory**: Remembers context from previous conversations
 - **Real-time Stats**: See the AI's learning progress in real-time
-- **Beautiful UI**: Modern, responsive chat interface
+- **🌑 Apple-like Dark Mode UI**: Stunning dark theme with glassmorphism effects and smooth animations
+- **🎬 Smooth Onboarding**: Beautiful first-time user experience explaining how the AI works
+- **Beautiful UI**: Modern, responsive chat interface with premium design
 
 ## 🎯 How It Works
 
@@ -125,6 +133,31 @@ Your AI will be live at: `https://your-app.railway.app`
 
 3. **Add Environment Variable**:
    - In Vercel dashboard, add `MONGODB_URI` with your connection string
+
+## 🎨 UI Features
+
+### Dark Mode Design
+- **Apple-inspired aesthetics** with true black backgrounds (#000000)
+- **Glassmorphism effects** with backdrop blur for modern look
+- **Smooth animations** with cubic-bezier easing curves
+- **Gradient accents** using blue-purple color scheme
+- **Custom scrollbars** that match the dark theme
+- **Hover effects** with elevation changes on all interactive elements
+- **Responsive design** that looks great on all devices
+
+### Onboarding Experience
+- **First-time visitors** see a beautiful onboarding screen
+- **Three key features** highlighted with smooth animations
+- **Staggered animations** for feature cards
+- **Floating icon** animation for visual appeal
+- **Get Started button** to begin using the AI
+- Onboarding preference saved in localStorage (shows only once)
+
+### Reset Onboarding
+To see the onboarding screen again:
+1. Open browser console (F12)
+2. Type: `localStorage.removeItem('hasSeenOnboarding')`
+3. Refresh the page
 
 ## 💡 Usage Guide
 
