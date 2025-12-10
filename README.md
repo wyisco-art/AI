@@ -1,4 +1,15 @@
-# 🧠 Adaptive Learning AI
+# 🤖 AI Projects Collection
+
+This repository contains two exciting AI projects:
+
+## 🎮 [Slope AI Game Player](./slope-ai/)
+An AI that learns to play the online game **Slope** using Deep Q-Learning (DQN) and computer vision. It automatically detects your game region and learns to control using A and D keys.
+
+**[→ Go to Slope AI →](./slope-ai/)**
+
+---
+
+## 🧠 Adaptive Learning Chatbot
 
 An AI chatbot that **learns from every conversation** and adapts its responses over time based on user interactions, feedback, and teachings.
 
@@ -324,6 +335,31 @@ If you encounter issues:
 ## 🎉 Have Fun!
 
 This AI learns from YOU. The more you interact with it, teach it, and provide feedback, the smarter it becomes. Create something amazing!
+
+---
+
+## 📁 Repository Structure
+
+This repository contains multiple AI projects:
+
+### 🎮 Slope AI Game Player (`/slope-ai`)
+Deep reinforcement learning agent that learns to play Slope using:
+- Computer vision for game state detection
+- DQN (Deep Q-Network) for decision making
+- Automated keyboard control
+- Real-time learning visualization
+
+**[View Slope AI Documentation →](./slope-ai/README.md)**
+
+Quick start:
+```bash
+cd slope-ai
+pip install -r requirements.txt
+python quickstart.py
+```
+
+### 🧠 Adaptive Learning Chatbot (root directory)
+Web-based chatbot with adaptive learning capabilities (documented above)
 
 ---
 
